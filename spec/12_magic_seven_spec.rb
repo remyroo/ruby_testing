@@ -70,34 +70,65 @@ describe MagicSeven do
   # Write a test for each of the following methods:
 
   describe '#subtract_four' do
+    context 'when the previous step is 9' do
+      it 'returns 5' do
+        previous_step = 9
+        result = game.subtract_four(previous_step)
+        expect(result).to eq(5)
+      end
+    end
   end
 
   describe '#divide_by_two' do
+    context 'when the previous step is 4' do
+      it 'returns 2' do
+        previous_step = 4
+        result = game.divide_by_two(previous_step)
+        expect(result).to eq(2)
+      end
+    end
   end
 
   # The following tests will need you to create new instances of MagicSeven with
   # a specific value for the random_number.
   describe '#subtract_random_number' do
+    subject(:game) { MagicSeven.new(4) }
+
+    context 'when previous number is 10 and the random number is 4' do
+      it 'returns the correct number' do
+        previous_number = 10
+        result = game.subtract_random_number(previous_number)
+        expect(result).to eq(6)
+      end
+    end
   end
 
   # The #play method will always return seven! Test this game, using any
   # integer as the random_number. Update the context with the number.
   describe '#play' do
-    context 'when the random number is ...' do
-      # remove the 'x' before running this test
-      xit 'will return 7' do
+    subject(:game) { MagicSeven.new(rand_num) }
+
+    context 'when the random number is 5' do
+      let(:rand_num) { 5 }
+      it 'will return 7' do
+        result = game.play
+        expect(result).to eq(7)
       end
     end
 
-    context 'when the random number is ...' do
-      # remove the 'x' before running this test
-      xit 'will return 7' do
+    context 'when the random number is 10' do
+      let(:rand_num) { 10 }
+      it 'will return 7' do
+        result = game.play
+        expect(result).to eq(7)
       end
     end
 
-    context 'when the random number is ...' do
-      # remove the 'x' before running this test
-      xit 'will return 7' do
+    context 'when the random number is 15' do
+      let(:rand_num) { 15 }
+      it 'will return 7' do
+        result = game.play
+        expect(result).to eq(7)
       end
     end
   end
